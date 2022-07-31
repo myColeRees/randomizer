@@ -1,0 +1,9 @@
+Classes									Properties			
+id	class	properties	subclasses	superclass	probabilityContext				id	classId	isLocked	Probability
+1	NPC	[2]	[]	null					1	1		0.66
+2	Gear	[]	"[3,4,5]"	null								
+3	Sword	[]	[]	2								
+4	Staff	[]	[]	2								
+5	Axe	[]	[]	2								
+6	Dungeon	[]	[7]	null								
+7	Dungeon1	"[1,1,1]"	[]	6								
