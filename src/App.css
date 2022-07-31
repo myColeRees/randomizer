@@ -20,7 +20,7 @@ body {
 .header--triple_dot {
   height: 50px;
   width: 50px;
-  background-color: white;
+  background-color: gray;
   cursor: pointer;
 }
 
