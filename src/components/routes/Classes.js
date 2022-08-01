@@ -20,7 +20,7 @@ export default function Classes(props) {
       (item) => item.parentClass === idSelected
     );
     setDisplayedClasses(selectedClass);
-    let clickedItem = displayedClasses.find((item) => item.id === idSelected);
+    let clickedItem = classesData.find((item) => item.id === idSelected);
     props.setTitle(clickedItem ? clickedItem.itemClass : "Classes");
   }, [idSelected, classesData]);
 
