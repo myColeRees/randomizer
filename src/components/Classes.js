@@ -1,28 +1,24 @@
-import LineItem from "../LineItem";
+import LineItem from "./ClassLineItem";
 import React from "react";
 import { nanoid } from "nanoid";
 import { useParams } from "react-router-dom";
 
 export default function Classes(props) {
-  let [idSelected, setIdSelected] = React.useState(null);
   let [displayedClasses, setDisplayedClasses] = React.useState([]);
   let [classesData, setClassesData] = React.useState(
     () => JSON.parse(localStorage.getItem("classes")) || []
   );
+
   const { urlId } = useParams();
 
   React.useEffect(() => {
-    setIdSelected(urlId === undefined ? null : urlId);
-  }, [urlId]);
-
-  React.useEffect(() => {
     let selectedClass = classesData.filter(
-      (item) => item.parentClass === idSelected
+      (item) => item.parentClass === props.idSelected
     );
     setDisplayedClasses(selectedClass);
-    let clickedItem = classesData.find((item) => item.id === idSelected);
+    let clickedItem = classesData.find((item) => item.id === props.idSelected);
     props.setTitle(clickedItem ? clickedItem.itemClass : "Classes");
-  }, [idSelected, classesData]);
+  }, [props.idSelected, classesData]);
 
   React.useEffect(() => {
     // save classes to local storage
@@ -32,7 +28,11 @@ export default function Classes(props) {
   function setClassesState(event, id) {
     const { name, type, checked, value } = event.target;
 
-    // save data on every change to any lineItem
+    if (name === "probability" && (value < 0 || value > 100)) {
+      return;
+    }
+
+    // save data on every change to any classLineItem
     setClassesData((prevData) =>
       prevData.map((item) =>
         item.id === id ? { ...item, [name]: value } : item
@@ -59,15 +59,11 @@ export default function Classes(props) {
           id: nanoid(),
           itemClass: textValue,
           probability: 0,
-          parentClass: idSelected,
+          parentClass: props.idSelected,
         },
       ];
     });
     e.target.value = "";
-  }
-
-  function handleBlur(e) {
-    updateDataWithInput(e);
   }
 
   function handleKeyup(e) {
@@ -80,7 +76,7 @@ export default function Classes(props) {
     switch (name) {
       case "new-itemClass":
         return value.length > 0;
-      case "itemClass":
+      case "new-classProperty":
         return value.length > 0;
       case "probability":
         return value <= 1;
@@ -89,10 +85,30 @@ export default function Classes(props) {
     }
   }
 
+  // Clerics only have cleric spells
+
+  // could have spells be property of cleric class,
+  // could make cleric PC and set all other spells to 0
+  // could make cleric spell list
+
+  // or have some kind of Switch mechanism...
+  // Switch (Class)
+  // case: Cleric
+  // clericSpells
+  // case: Barbarian
+  // barbarian spells
+
+  // maybe it switch could drive PC you get as well
+
+  // Could have PC affect siblings
+  // that way if you have a NPC
+  // Get Cleric Class which comes with Cleric PC
+  // then Cleric PC could affect spells and spells wouldn't have to be a subclass of Cleric
+
   let lineItems = displayedClasses.map((item) => {
     return (
       <LineItem
-        isSelected={item.id === idSelected}
+        isSelected={item.id === props.idSelected}
         key={item.id}
         itemClass={item.itemClass}
         deleteItem={deleteItem}
@@ -112,10 +128,10 @@ export default function Classes(props) {
         name='new-itemClass'
         type='text'
         placeholder='Add Item'
-        onBlur={handleBlur}
+        onBlur={updateDataWithInput}
         onKeyUp={handleKeyup}
       />
-      <div className='hamburger' />
+      <br />
     </div>
   );
 }

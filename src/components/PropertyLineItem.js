@@ -2,7 +2,7 @@ import React from "react";
 import { getTextWidthFromId } from "../utils";
 import { Link } from "react-router-dom";
 
-export default function LineItem(props) {
+export default function PropertyLineItem(props) {
   let [textWidth, setTextWidth] = React.useState();
   let [errors, setErrors] = React.useState({ itemClass: "", probability: "" });
 
@@ -80,7 +80,7 @@ export default function LineItem(props) {
 
   return (
     <Link to={`/Classes/${props.id}`}>
-      <form className={`lineItem ${props.isSelected ? "selected-item" : ""}`}>
+      <form className='lineItem'>
         <input
           name='itemClass'
           type='text'
@@ -88,7 +88,7 @@ export default function LineItem(props) {
           style={{ width: textWidth }} // dynamically control textbox width
           onChange={(e) => {
             runValidation(e);
-            props.setClassesState(e);
+            props.setPropertyState(e);
             updateTextWidth(props.id);
           }}
           onBlur={setFocusIfError}
@@ -123,7 +123,7 @@ export default function LineItem(props) {
           }}
           onChange={(e) => {
             runValidation(e);
-            props.setClassesState(e);
+            props.setPropertyState(e);
           }}
           onBlur={setFocusIfError} // don't let user navigate away if there's problem with input
           value={props.probability}

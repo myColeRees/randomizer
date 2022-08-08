@@ -5,7 +5,8 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 // Routes
-import Classes from "./components/routes/Classes";
+// import Classes from "./components/Classes";
+import ClassesContainer from "./components/routes/ClassesContainer";
 import NumericalClasses from "./components/routes/NumericalClasses";
 import ProbabilityContexts from "./components/routes/ProbabilityContexts";
 import SavedOutputs from "./components/routes/SavedOutputs";
@@ -31,7 +32,8 @@ function App() {
         )}
 
         <Routes>
-          <Route path='/' element={<Classes setTitle={setTitle} />} />
+          <Route path='/' element={<ClassesContainer setTitle={setTitle} />} />
+          {/* <Route path='/' element={<Classes setTitle={setTitle} />} /> */}
           <Route
             path='/ProbabilityContexts'
             element={<ProbabilityContexts setTitle={setTitle} />}
@@ -42,9 +44,17 @@ function App() {
           />
           <Route
             path='/Classes/:urlId'
+            element={<ClassesContainer setTitle={setTitle} />}
+          />
+          <Route
+            path='/Classes'
+            element={<ClassesContainer setTitle={setTitle} />}
+          />
+          {/* <Route
+            path='/Classes/:urlId'
             element={<Classes setTitle={setTitle} />}
           />
-          <Route path='/Classes' element={<Classes setTitle={setTitle} />} />
+          <Route path='/Classes' element={<Classes setTitle={setTitle} />} /> */}
           <Route
             path='/NumericalClasses'
             element={<NumericalClasses setTitle={setTitle} />}
