@@ -10,6 +10,7 @@ export default function ClassesContainer(props) {
 
   React.useEffect(() => {
     setIdSelected(urlId === undefined ? null : urlId);
+    !urlId && setisSubclassesShown(true);
   }, [urlId]);
 
   function flipPage() {
@@ -29,6 +30,12 @@ export default function ClassesContainer(props) {
           setTitle={props.setTitle}
         />
       )}
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
 
       {idSelected && (
         <div className='page-flippers radio-toolbar'>

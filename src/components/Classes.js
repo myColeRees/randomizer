@@ -131,7 +131,6 @@ export default function Classes(props) {
         onBlur={updateDataWithInput}
         onKeyUp={handleKeyup}
       />
-      <br />
     </div>
   );
 }

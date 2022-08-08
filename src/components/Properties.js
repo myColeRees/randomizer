@@ -18,7 +18,6 @@ export default function Properties(props) {
       (item) => item.parentClass === props.idSelected
     );
     setDisplayedProperties(selectedClass);
-    let clickedItem = propertyData.find((item) => item.id === props.idSelected);
     props.setTitle(
       props.classItemSelected
         ? `${props.classItemSelected} Properties`
@@ -111,7 +110,6 @@ export default function Properties(props) {
         onBlur={updatePropertyWithInput}
         onKeyUp={handlePropertyInputKeyup}
       />
-      <br />
     </div>
   );
 }
