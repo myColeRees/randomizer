@@ -286,76 +286,18 @@ input[type="number"] {
   border-color: #4c4;
 }
 
-/* .breadcrumb {
-  display: inline;
-  float: left;
-  background: #3498db;
-  text-align: center;
-  position: relative;
-  margin: 0 0.3em 0 0;
-  font-size: 1em;
-  color: #fff;
-  padding: 0.4em 1em 0.4em 2em;
-}
-
-.breadcrumb:after {
-  content: "";
-  border-top: 1.05em solid transparent;
-  border-bottom: 1.05em solid transparent;
-  border-left: 1.05em solid #3498db;
-  position: absolute;
-  right: -1.05em;
-  top: 0;
-}
-
-.breadcrumb:before {
-  content: "";
-  border-top: 1.05em solid transparent;
-  border-bottom: 1.05em solid transparent;
-  border-left: 1.05em solid #1c567d;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.breadcrumbs ul {
-  transform: rotateY(1deg);
-  transform-origin: 0 0;
-  perspective: 10000px;
-  transform-style: preserve-3d;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.breadcrumbs li {
-  list-style: none;
-  display: inline-block;
-  transform: rotateY(-1deg);
-  transform-origin: 0 0;
-}
-
-.breadcrumbs li:first-child .breadcrumb:before {
-  display: none;
-}
-
-.breadcrumbs {
-  background-color: #1c567d;
-  overflow-x: auto;
-} */
-
 .breadcrumb {
   background: #3498db;
   text-align: center;
   font-size: 0.9em;
   color: #fff;
-  padding: 0em 1em;
+  padding: 1em 0.8em;
   margin-right: 3px;
 }
 
 .breadcrumbs ul {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   white-space: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
@@ -364,6 +306,7 @@ input[type="number"] {
 .breadcrumbs li {
   list-style: none;
   display: inline;
+  margin: 0;
 }
 
 .breadcrumbs {
