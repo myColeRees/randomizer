@@ -1,5 +1,6 @@
 import Classes from "../Classes";
 import Properties from "../Properties";
+import Breadcrumbs from "../BreadCrumbs";
 import React from "react";
 import { useParams, useLocation } from "react-router-dom";
 
@@ -21,6 +22,7 @@ export default function ClassesContainer(props) {
 
   return (
     <div>
+      <Breadcrumbs idSelected={idSelected} />
       {isSubclassesShown ? (
         <Classes idSelected={idSelected} setTitle={props.setTitle} />
       ) : (
